@@ -1,0 +1,229 @@
+.alumni-container {
+  font-family: 'Arial', sans-serif;
+  
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+  color: #333;
+ background: linear-gradient(
+  135deg,
+  rgba(84, 14, 28, 0.2) 0%,     /* #540e1c with 20% opacity */
+  rgba(49, 22, 93, 0.2) 40%,    /* #31165d with 20% opacity */
+  rgba(0, 0, 0, 0.2) 100%       /* #000000 with 20% opacity */
+);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.subheading {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.tree-container {
+  position: relative;
+  height: auto;
+  width: fit-content; /* optional: adapts to content width */
+  aspect-ratio: 103/60;
+  margin: 1.5rem auto;
+  padding: 1rem;
+
+  /* Glassmorphism styles */
+  background: linear-gradient(135deg, #1a0a1c 0%, #31165d 50%, #000000 100%); /* semi-transparent */
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(191, 191, 200, 0.37);
+  backdrop-filter: blur(20px); /* for blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.tree-svg {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+}
+
+.tree {
+  fill: #6c5353;
+  stroke: #4a3a3a;
+  stroke-width: 0.5;
+}
+
+.leaf {
+  fill: #9bd230;
+  opacity: 0.8;
+}
+
+.year-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto 0 auto;
+   max-width: 800px;
+}
+
+.year-button {
+  background-color: white;
+  border: 2px solid #9bd230;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: #9918aa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  min-width: 70px;
+ 
+}
+
+.year-button:hover {
+  background-color: #f0f8e8;
+}
+
+.year-button.active {
+  background-color: #9bd230;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Different colors for different eras */
+.year-button:nth-child(-n+5) { /* First 5 years (2004-2008) */
+  border-color: #d2a679;
+}
+.year-button:nth-child(-n+5):hover {
+  background-color: #f8f0e8;
+}
+.year-button:nth-child(-n+5).active {
+  background-color: #d2a679;
+}
+
+.year-button:nth-last-child(-n+6) { /* Last 6 years (2020-2025) */
+  border-color: #6c5353;
+}
+.year-button:nth-last-child(-n+6):hover {
+  background-color: #f0ece8;
+}
+.year-button:nth-last-child(-n+6).active {
+  background-color: #6c5353;
+}
+
+.alumni-details {
+  background: rgba(255, 255, 255, 0.15); /* translucent white */
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem auto 0 auto;
+  min-height: 200px;
+   max-width: 1000px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2); /* soft glow */
+  backdrop-filter: blur(10px); /* frosted glass blur */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+  color: #fff; /* optional: better contrast on dark backgrounds */
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.member-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  backdrop-filter: blur(10px)
+  
+}
+
+.member-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #2c18dd;
+}
+
+.member-avatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0.5rem;
+  background: linear-gradient(135deg, #4b09a7, #d431a0);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(155, 210, 48, 0.3);
+}
+
+.member-name {
+  font-size: 0.8rem;
+  color: #0f0b0b;
+  font-weight: 500;
+}
+
+.prompt {
+  color: #888;
+  font-style: italic;
+  padding: 2rem 1rem;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .year-buttons {
+    gap: 0.3rem;
+  }
+  
+  .year-button {
+    padding: 0.4rem 0.8rem;
+    min-width: 60px;
+    font-size: 0.8rem;
+  }
+  
+  .members-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .year-buttons {
+    gap: 0.2rem;
+  }
+  
+  .year-button {
+    padding: 0.3rem 0.6rem;
+    min-width: 50px;
+    font-size: 0.7rem;
+  }
+  
+  .member-card {
+    padding: 0.8rem;
+  }
+  
+  .member-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
