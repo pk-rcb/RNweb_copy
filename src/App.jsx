@@ -7,7 +7,7 @@ import Sponsors from './sponsors';
 import Event from './Event';
 import Alumni from './Alumni';
 import Preloader from './Preloader';
-
+import Footer from './Footer';
 function App() {
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,8 +63,10 @@ function App() {
               <Home />
             </div>
             <Event />
+             
             <Alumni />
             <Sponsors />
+           <Footer></Footer>
           </main>
         </>
       )}

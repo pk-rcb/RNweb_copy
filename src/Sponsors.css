@@ -12,9 +12,9 @@
   padding: 3rem 1.5rem;
   background: linear-gradient(
   135deg,
-  rgba(84, 14, 28, 0.2) 0%,    /* #540e1c with 20% opacity */
-  rgba(22, 2, 53, 0.2) 10%,    /* #160235 with 20% opacity */
-  rgba(0, 0, 0, 0.2) 100%      /* black with 20% opacity */
+  rgba(84, 14, 28, 0.15) 0%,   
+  rgba(22, 2, 53, 0.2) 50%,    
+  rgba(0, 0, 0, 0.25) 100%     
 );
   background-repeat: no-repeat;
   background-attachment: fixed;
