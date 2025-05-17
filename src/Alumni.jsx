@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,  useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Alumni.css";
 
 const Alumni = () => {
   const [selectedYear, setSelectedYear] = useState(null);
-
+  const location = useLocation();
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   // Manually editable alumni data
   const alumniData = {
    
@@ -30,7 +34,7 @@ const Alumni = () => {
   const years = Object.keys(alumniData).sort((a, b) => b - a);
   return (
     <div className="alumni-container">
-      <h1>Our Alumni Tree</h1>
+      <h1 className="page-title">Our Alumni Tree</h1>
       <p className="subheading">Growing Strong Since 2004</p>
 
       <div className="tree-container">

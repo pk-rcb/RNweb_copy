@@ -25,7 +25,7 @@
   }
   
   .logo-image {
-    height: 40px;
+    height: 50px;
     transition: transform 0.3s ease;
   }
   
@@ -112,7 +112,12 @@
       right: -100%;
       width: 80%;
       height: 100vh;
-      background: rgba(26, 26, 46, 0.95);
+   background: linear-gradient(
+  135deg,
+  rgba(25, 15, 85, 0.8) 0%,       /* Rich navy blue */
+  rgba(70, 10, 45, 0.85) 50%,     /* Deep wine purple */
+  rgba(120, 15, 30, 0.9) 100%     /* Dark burgundy */
+);
       backdrop-filter: blur(10px);
       flex-direction: column;
       justify-content: center;

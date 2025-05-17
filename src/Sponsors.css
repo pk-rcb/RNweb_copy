@@ -22,18 +22,35 @@
   min-height: 100vh;
   overflow: hidden;
 }
-
 .page-title {
   text-align: center;
   font-size: clamp(2rem, 5vw, 2.5rem);
   color: transparent;
-  background: linear-gradient(45deg, var(--primary), var(--accent));
+  background: linear-gradient(
+    45deg, 
+    var(--primary), 
+    var(--accent),
+    var(--primary)
+  );
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
+  margin-top: 3rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700;
+  
+  /* Animation properties */
+  animation: 
+    gradient_Shift 8s ease infinite,
+    subtlePulse 3s ease-in-out infinite alternate;
+  
+  /* Initial state for transform */
+  transform: translateY(0);
+  
+  /* Smooth transition for hover effects */
+  transition: all 0.4s ease-out;
 }
 
 .sponsor-grid {
@@ -162,3 +179,31 @@
     transition: none !important;
   }
 }
+
+
+
+/* Gradient animation */
+@keyframes gradient_Shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle pulsing effect */
+@keyframes subtlePulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1.03);
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+

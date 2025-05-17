@@ -1,48 +1,71 @@
-import { useState, useEffect } from 'react'
-import './Navbar.css'
-import logoImage from './assets/rnlogo.png'
+import { useState, useEffect } from 'react';
+import './Navbar.css';
+import logoImage from './assets/rnlogo.png';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ activeSection, setActiveSection }) => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+      setScrolled(window.scrollY > 50);
+      
+      // Only update section if on home page
+      if (location.pathname === '/') {
+        const sections = ['home', 'events', 'team'];
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              setActiveSection(section);
+              break;
+            }
+          }
+        }
+      }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'events', label: 'Events' },
-    { id: 'team', label: 'Team' },
-    { id: 'alumni', label: 'Alumni' },
-    { id: 'sponsors', label: 'Sponsors' }
-  ]
-
-  const handleNavClick = (id) => {
-    setActiveSection(id)
-    setMenuOpen(false)
+  const handleNavClick = (id, path) => {
+    setActiveSection(id);
+    setMenuOpen(false);
     
-    // Smooth scroll implementation
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    // If navigating to a different page
+    if (location.pathname !== path) {
+      if (path === '/sponsors' || path === '/alumni') {
+        // For sponsor/alumni pages, scroll to top after navigation
+        navigate(path, { state: { scrollToTop: true } });
+      } else {
+        navigate(path);
+      }
+    } 
+    // If on home page and clicking a home section
+    else if (location.pathname === '/' && path === '/') {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }
+  };
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo">
-          <a href="#home" onClick={() => handleNavClick('home')}>
-          <img src={logoImage} alt="RN Logo" className="logo-image" />
-          </a>
+          <Link 
+            to="/" 
+            onClick={() => handleNavClick('home', '/')}
+          >
+            <img src={logoImage} alt="RN Logo" className="logo-image" />
+          </Link>
         </div>
 
         <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
@@ -53,23 +76,52 @@ const Navbar = ({ activeSection, setActiveSection }) => {
 
         <nav className={menuOpen ? 'active' : ''}>
           <ul className="nav-links">
-            {navLinks.map(link => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  className={activeSection === link.id ? 'active' : ''}
-                  onClick={() => handleNavClick(link.id)}
-                >
-                  {link.label}
-                  <span className="nav-indicator"></span>
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/"
+                className={activeSection === 'home' ? 'active' : ''}
+                onClick={() => handleNavClick('home', '/')}
+              >
+                Home
+                <span className="nav-indicator"></span>
+              </Link>
+            </li>
+           
+            <li>
+              <Link
+                to="/"
+                onClick={() => handleNavClick('team', '/')}
+                className={activeSection === 'team' ? 'active' : ''}
+              >
+                Team
+                <span className="nav-indicator"></span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/alumni"
+                onClick={() => handleNavClick('alumni', '/alumni')}
+                className={activeSection === 'alumni' ? 'active' : ''}
+              >
+                Alumni
+                <span className="nav-indicator"></span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/sponsors"
+                onClick={() => handleNavClick('sponsors', '/sponsors')}
+                className={activeSection === 'sponsors' ? 'active' : ''}
+              >
+                Sponsors
+                <span className="nav-indicator"></span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

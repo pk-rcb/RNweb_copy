@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import AnimatedBackground from './AnimatedBackground';
 import Home from './Home';
@@ -8,34 +9,51 @@ import Event from './Event';
 import Alumni from './Alumni';
 import Preloader from './Preloader';
 import Footer from './Footer';
-function App() {
+
+function AppContent() {
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const homeRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(loadingTimer);
+  }, []);
+
+  useEffect(() => {
+    // Reset to full opacity when returning to home page
+    if (location.pathname === '/') {
+      setBackgroundOpacity(1);
+    } else {
+      setBackgroundOpacity(0);
+    }
+
     const handleScroll = () => {
-      if (!homeRef.current) return;
+      // Only apply scroll effect on home page
+      if (location.pathname !== '/' || !homeRef.current) return;
       
       const homeHeight = homeRef.current.offsetHeight;
       const scrollPosition = window.scrollY;
-      
-      // Calculate opacity (1 at top, 0 when scrolled 50% past home section)
       const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.5)));
       setBackgroundOpacity(opacity);
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(loadingTimer);
-    };
-  }, []);
+  // Force update opacity when home page mounts
+  useEffect(() => {
+    if (location.pathname === '/' && homeRef.current) {
+      const homeHeight = homeRef.current.offsetHeight;
+      const scrollPosition = window.scrollY;
+      const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.5)));
+      setBackgroundOpacity(opacity);
+    }
+  }, [location.pathname, homeRef.current]);
 
   return (
     <>
@@ -51,7 +69,8 @@ function App() {
             height: '100%',
             zIndex: -1,
             opacity: backgroundOpacity,
-            transition: 'opacity 0.5s ease-out'
+            transition: 'opacity 0.5s ease-out',
+            pointerEvents: 'none' // Add this to prevent interaction issues
           }}>
             <AnimatedBackground />
           </div>
@@ -59,18 +78,31 @@ function App() {
           <Navbar />
           
           <main>
-            <div ref={homeRef}>
-              <Home />
-            </div>
-            <Event />
-             
-            <Alumni />
-            <Sponsors />
-           <Footer></Footer>
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <div ref={homeRef}>
+                    <Home />
+                  </div>
+                  <Event />
+                </>
+              } />
+              <Route path="/alumni" element={<Alumni />} />
+              <Route path="/sponsors" element={<Sponsors />} />
+            </Routes>
+            <Footer />
           </main>
         </>
       )}
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

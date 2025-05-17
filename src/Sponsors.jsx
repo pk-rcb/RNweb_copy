@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Sponsors.css';
 
 // Import sponsor images statically
@@ -44,7 +45,12 @@ const sponsors = [
 const Sponsors = () => {
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
+  const location = useLocation();
 
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!cardRefs.current) return;
