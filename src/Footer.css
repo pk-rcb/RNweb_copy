@@ -144,21 +144,6 @@ background: linear-gradient(
   font-size: 0.9rem;
 }
 
-.footer-links {
-  margin-top: 0.5rem;
-}
-
-.footer-links a {
-  color: #bdc3c7;
-  margin: 0 0.5rem;
-  font-size: 0.8rem;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #f39c12;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

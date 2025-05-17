@@ -9,6 +9,7 @@ import {
   FaPhone,
   FaEnvelope,
   FaClock,
+  FaLinkedin,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -20,19 +21,19 @@ const Footer = () => {
           <h3>About Our Club</h3>
           <p>
             We are a community of enthusiasts dedicated to promoting our shared
-            interests and organizing exciting events for our members.
+            interests and organizing exciting events for the students.
           </p>
           <div className="social-icons">
             <a href=" https://www.facebook.com/radionitroz.nitdgp/" aria-label="Facebook">
               <FaFacebook />
             </a>
-            <a href="https://twitter.com" aria-label="Twitter">
-              <FaTwitter />
+            <a href="https://www.linkedin.com/company/radio-nitroz-nitdgp/" aria-label="Linked In">
+              <FaLinkedin />
             </a>
-            <a href="https://instagram.com" aria-label="Instagram">
+            <a href="https://www.instagram.com/radionitroz.nitdgp/" aria-label="Instagram">
               <FaInstagram />
             </a>
-            <a href="https://youtube.com" aria-label="YouTube">
+            <a href="https://www.youtube.com/@RadioNitroz" aria-label="YouTube">
               <FaYoutube />
             </a>
           </div>
@@ -43,14 +44,9 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="">Home</a>
             </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/events">Events</a>
-            </li>
+            
             <li>
               <a href="/gallery">Gallery</a>
             </li>
@@ -101,10 +97,7 @@ const Footer = () => {
           Made with ❤️ by Web dev team <br />
           &copy; {new Date().getFullYear()} Radio NITroz. All Rights Reserved.
         </p>
-        <div className="footer-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
-        </div>
+        
       </div>
     </footer>
   );
