@@ -13,10 +13,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // Only update section if on home page
       if (location.pathname === '/') {
-        const sections = ['home', 'events', 'team'];
+        const sections = ['home', 'events','team'];
         for (const section of sections) {
           const element = document.getElementById(section);
           if (element) {
@@ -37,7 +37,7 @@ const Navbar = () => {
   const handleNavClick = (id, path) => {
     setActiveSection(id);
     setMenuOpen(false);
-    
+
     // If navigating to a different page
     if (location.pathname !== path) {
       if (path === '/sponsors' || path === '/alumni') {
@@ -46,7 +46,7 @@ const Navbar = () => {
       } else {
         navigate(path);
       }
-    } 
+    }
     // If on home page and clicking a home section
     else if (location.pathname === '/' && path === '/') {
       const element = document.getElementById(id);
@@ -60,8 +60,8 @@ const Navbar = () => {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             onClick={() => handleNavClick('home', '/')}
           >
             <img src={logoImage} alt="RN Logo" className="logo-image" />
@@ -86,11 +86,12 @@ const Navbar = () => {
                 <span className="nav-indicator"></span>
               </Link>
             </li>
-           
+
+
             <li>
               <Link
-                to="/"
-                onClick={() => handleNavClick('team', '/')}
+                to="/team"
+                onClick={() => handleNavClick('team', '/team')}
                 className={activeSection === 'team' ? 'active' : ''}
               >
                 Team

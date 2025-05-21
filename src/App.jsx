@@ -9,6 +9,8 @@ import Event from './Event';
 import Alumni from './Alumni';
 import Preloader from './Preloader';
 import Footer from './Footer';
+import TeamPage from './TeamPage';
+
 
 function AppContent() {
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
@@ -34,7 +36,7 @@ function AppContent() {
     const handleScroll = () => {
       // Only apply scroll effect on home page
       if (location.pathname !== '/' || !homeRef.current) return;
-      
+
       const homeHeight = homeRef.current.offsetHeight;
       const scrollPosition = window.scrollY;
       const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.5)));
@@ -74,19 +76,20 @@ function AppContent() {
           }}>
             <AnimatedBackground />
           </div>
-          
+
           <Navbar />
-          
+
           <main>
             <Routes>
               <Route path="/" element={
                 <>
                   <div ref={homeRef}>
                     <Home />
+                    <Event />
                   </div>
-                  <Event />
                 </>
               } />
+              <Route path="/team" element={<TeamPage />} />
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/sponsors" element={<Sponsors />} />
             </Routes>
@@ -107,3 +110,4 @@ function App() {
 }
 
 export default App;
+
