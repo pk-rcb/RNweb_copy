@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import AnimatedBackground from './AnimatedBackground';
 import Home from './Home';
 import './index.css';
-import Sponsors from './sponsors';
+import Sponsors from './Sponsors';
 import Event from './Event';
 import Alumni from './Alumni';
 import Preloader from './Preloader';
