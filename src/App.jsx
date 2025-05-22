@@ -9,7 +9,7 @@ import Event from './Event';
 import Alumni from './Alumni';
 import Preloader from './Preloader';
 import Footer from './Footer';
-import TeamPage from './TeamPage';
+import Team from './Team';
 
 
 function AppContent() {
@@ -39,7 +39,7 @@ function AppContent() {
 
       const homeHeight = homeRef.current.offsetHeight;
       const scrollPosition = window.scrollY;
-      const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.5)));
+      const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.1)));
       setBackgroundOpacity(opacity);
     };
 
@@ -52,7 +52,7 @@ function AppContent() {
     if (location.pathname === '/' && homeRef.current) {
       const homeHeight = homeRef.current.offsetHeight;
       const scrollPosition = window.scrollY;
-      const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.5)));
+      const opacity = Math.max(0, 1 - (scrollPosition / (homeHeight * 0.1)));
       setBackgroundOpacity(opacity);
     }
   }, [location.pathname, homeRef.current]);
@@ -89,7 +89,7 @@ function AppContent() {
                   </div>
                 </>
               } />
-              <Route path="/team" element={<TeamPage />} />
+              <Route path="/team" element={<Team />} />
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/sponsors" element={<Sponsors />} />
             </Routes>

@@ -44,13 +44,11 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <a href="">Home</a>
+              <a href="/home">Home</a>
             </li>
-            
-            <li>
-              <a href="/gallery">Gallery</a>
+        <li>
+              <a href="/team">Our Team</a>
             </li>
-
             <li>
               <a href="/contact">Contact Us</a>
             </li>
@@ -94,8 +92,8 @@ const Footer = () => {
       {/* Copyright */}
       <div className="footer-bottom">
         <p>
-          Made with ❤️ by Web dev team <br />
-          &copy; {new Date().getFullYear()} Radio NITroz. All Rights Reserved.
+          Made with ❤️ by Web Dev Team <br />
+          &copy; {new Date().getFullYear()} Radio NITroz. All Rights Are Reserved.
         </p>
         
       </div>

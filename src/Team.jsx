@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import "./TeamPage.css";
+import { useLocation } from "react-router-dom";
+import "./Team.css";
 import { FaInstagram, FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 
 // Faculty images
@@ -147,7 +148,10 @@ const members = {
 
 const MemberCard = ({ name, photo, post, domain, instagram, linkedin, phone, email }) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
-
+const location = useLocation();
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return (
     <div 
       className={`card ${isFlipped ? 'flipped' : ''}`}
@@ -160,14 +164,14 @@ const MemberCard = ({ name, photo, post, domain, instagram, linkedin, phone, ema
             <img className="avatar" src={photo} alt={name} />
             <div className="avatar-glow" />
           </div>
-          <h3 className="member-name">{name}</h3>
+          <h3 className="teammember-name">{name}</h3>
           <p className="member-role">{post || domain}</p>
-          <div className="flip-hint">Click to view contact</div>
+          <div className="flip-hint">Click to view or contact</div>
         </div>
         
         {/* Back Side */}
         <div className="card-back">
-          <h3 className="member-name">{name}</h3>
+          <h3 className="teammember-name">{name}</h3>
           <p className="member-role">{post || domain}</p>
           
           <div className="contact-info">
@@ -271,7 +275,7 @@ export default function TeamPage() {
       
       <h1 className="title">
         <span className="title-text">Radio Nitroz</span>
-        <span className="title-sub">Entertainment Club</span>
+        <span className="title-sub">Official Entertainment Club</span>
       </h1>
 
       <div className="tabs-container">
