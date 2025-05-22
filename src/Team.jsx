@@ -166,7 +166,7 @@ const location = useLocation();
           </div>
           <h3 className="teammember-name">{name}</h3>
           <p className="member-role">{post || domain}</p>
-          <div className="flip-hint">Click to view contact</div>
+          <div className="flip-hint">Click to view or contact</div>
         </div>
         
         {/* Back Side */}
@@ -275,7 +275,7 @@ export default function TeamPage() {
       
       <h1 className="title">
         <span className="title-text">Radio Nitroz</span>
-        <span className="title-sub">Entertainment Club</span>
+        <span className="title-sub">Official Entertainment Club</span>
       </h1>
 
       <div className="tabs-container">
