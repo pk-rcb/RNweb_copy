@@ -179,6 +179,7 @@
   animation: card-pop 0.8s ease forwards;
   opacity: 0;
   transition: transform 0.3s ease;
+  z-index: 1;
 }
 
 .card:hover {
@@ -212,6 +213,7 @@
   align-items: center;
   justify-content: center;
   transition: var(--transition);
+  z-index: 2;
 }
 
 .card-front {
@@ -231,7 +233,7 @@
   background: var(--card-bg-back);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(123, 104, 238, 0.25);
-  transform: rotateY(180deg) translateZ(20px);
+  transform: rotateY(180deg) translateZ(1px);
   justify-content: space-between;
 }
 
@@ -366,6 +368,8 @@
   justify-content: center;
   gap: 2rem;
   margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .social-icon {
