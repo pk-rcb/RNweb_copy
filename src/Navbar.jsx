@@ -40,8 +40,8 @@ const Navbar = () => {
 
     // If navigating to a different page
     if (location.pathname !== path) {
-      if (path === '/sponsors' || path === '/alumni') {
-        // For sponsor/alumni pages, scroll to top after navigation
+      if (path === '/sponsors' || path === '/alumni' || path ==='/team'|| path === '/home') {
+        // For sponsor/alumni/team pages, scroll to top after navigation
         navigate(path, { state: { scrollToTop: true } });
       } else {
         navigate(path);

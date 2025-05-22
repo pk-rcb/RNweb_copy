@@ -8,7 +8,7 @@
   --card-bg: rgba(30, 30, 60, 0.85);
   --card-bg-back: rgba(40, 40, 80, 0.9);
   --text: #f5f5ff;
-  --text-secondary: #d0d0ff;
+  --text-secondary: #e6e6f4;
   --text-dark: #a0a0cc;
   --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 20px;
@@ -38,7 +38,12 @@
 }
 
 .team-page {
-  background: linear-gradient(-60deg, #0f0f23, #1e1e3a, #2a2a50, #0f0f23);
+ background: linear-gradient(
+  135deg,
+  rgba(84, 14, 28, 0.15) 0%,   
+  rgba(22, 2, 53, 0.2) 50%,    
+  rgba(0, 0, 0, 0.25) 100%     
+);
   background-size: 600% 600%;
   animation: gradient-flow 12s ease infinite;
   min-height: 100vh;
@@ -47,6 +52,7 @@
   position: relative;
   overflow-x: hidden;
   isolation: isolate;
+  
 }
 
 .particles-canvas {
@@ -107,19 +113,22 @@
 .tabs-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 2;
+  contain: layout;
 }
 
 .tabs {
-  display: flex;
+  display: inline-flex;
   background: rgba(30, 30, 60, 0.7);
-  border-radius: 60px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 0.5rem;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(123, 104, 238, 0.2);
   backdrop-filter: blur(8px);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tab-button {
@@ -153,7 +162,7 @@
   left: 10px;
   height: calc(100% - 20px);
   background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: 50px;
+  border-radius: 20px;
   transition: var(--transition);
   z-index: 0;
   box-shadow: 0 6px 20px rgba(123, 104, 238, 0.4);
@@ -280,7 +289,7 @@
   filter: blur(30px);
 }
 
-.member-name {
+.teammember-name {
   font-size: 1.5rem;
   text-align: center;
   margin: 1.2rem 0;
